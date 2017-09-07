@@ -8,7 +8,7 @@ function createExercise(_exercise, _description, _sets, _reps){
     var exercise = {exercise : _exercise, description : _description, sets : _sets, reps : _reps};
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
-        db.collection("exercises").insertOne(myobj, function(err, res) {
+        db.collection("exercises").insertOne(exercise, function(err, res) {
             if (err) throw err;
             console.log("1 document inserted");
             db.close();
@@ -42,6 +42,11 @@ module.exports.index = function(req, res) {
     });    
     
 };
+
+module.exports.createExercisePost = function(req, res){
+    createExercise(req.body._exercise,req.body._description,req.body._sets,req.body._reps);
+    res.send(201, '/');
+}
 
 module.exports.create = function(req, res) {
     res.render('create', { title: 'Create a new Exercise' });

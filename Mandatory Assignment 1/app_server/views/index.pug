@@ -1,20 +1,20 @@
 extends layout  
-.container
-    block content
-      h1.jumbotron= title
-      a(href='create' class='btn btn-default col-md-1') Create
+block content
+  .container
+    h1.jumbotron= title
+    a(href='create' class='btn btn-default col-md-1') Create
 
-      table(class='table-bordered')
-        tr
-          th Exercises
-          th Description
-          th Sets
-          th Reps/Time
-          each item in exercises
-            tr
-              td= item.exercise
-              td= item.description
-              td= item.sets
-              td= item.reps
+    table(class='table-bordered')
+      tr
+        th Exercises
+        th Description
+        th Sets
+        th Reps/Time
+        each item in exercises
+          tr
+            td= item.exercise
+            td= item.description
+            td= item.sets
+            td= item.reps
       
             

@@ -3,14 +3,14 @@ extends layout
 block content
     .container
         h1= title
-        form(method='POST')
+        form(method='POST', action='/createExercise')
             .form-group
-            input(type='text', placeholder='Exercise Name' name='name')
+            input(type='text', placeholder='Exercise Name' name='_exercise')
             .form-group
-            input(type='text', placeholder='Description' name='description')
+            input(type='text', placeholder='Description' name='_description')
             .form-group
-            input(type='text', placeholder='Number of sets' name='sets')
+            input(type='text', placeholder='Number of sets' name='_sets')
             .form-group
-            input(type='text' placeholder='Number of repetitions' name='reps')
+            input(type='text' placeholder='Number of repetitions' name='_reps')
             .form-group
             button.btn.btn-primary(type='submit') Add

@@ -16,4 +16,6 @@ router.get('/', controller.index);
 /* GET create program */
 router.get('/create', controller.create);
 
+router.post('/createExercise', controller.createExercisePost);
+
 module.exports = router;

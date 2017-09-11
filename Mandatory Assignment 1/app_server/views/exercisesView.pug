@@ -2,7 +2,7 @@ extends layout
 block content
   .container
     h1.jumbotron= title
-    a(href='create' class='btn btn-default col-md-1') Create
+    a(href='exerciseCreateView?_workout=' + _workout class='btn btn-default col-md-1') Create
 
     table(class='table-bordered')
       tr

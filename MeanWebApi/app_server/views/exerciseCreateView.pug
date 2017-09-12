@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .container
+        h1= title
+        form(method='POST', action='/exerciseCreatePost')
+            .form-group
+            input(type='text', placeholder='Exercise Name' name='_exercise')
+            .form-group
+            input(type='text', placeholder='Description' name='_description')
+            .form-group
+            input(type='text', placeholder='Number of sets' name='_sets')
+            .form-group
+            input(type='text' placeholder='Number of repetitions' name='_reps')
+            .form-group
+            input(type='hidden' value=_workout name='_workout')
+            button.btn.btn-primary(type='submit') Add

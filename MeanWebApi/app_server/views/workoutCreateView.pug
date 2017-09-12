@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    .container
+        h1= title
+        form(method='POST', action='/workoutCreatePost')
+            .form-group
+            input(type='text', placeholder='Workout Name' name='_name')
+            .form-group
+            button.btn.btn-primary(type='submit') Add

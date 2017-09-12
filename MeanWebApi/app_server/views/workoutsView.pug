@@ -1,0 +1,13 @@
+extends layout  
+block content
+  .container
+    h1.jumbotron= title
+    a(href='workoutCreateView' class='btn btn-default col-md-1') Create
+
+    table(class='table-bordered')
+      tr
+        th Name
+        each item in workouts
+          tr
+            td
+              a(href='exercisesView?_workout=' + item._id)= item.name

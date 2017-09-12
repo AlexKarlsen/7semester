@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const workoutsController = require('../controllers/workouts');
+const workoutsController = require('../controllers/workoutsController');
 
 // Collection Uri Routing
 router
@@ -10,8 +10,9 @@ router
 
 // Element Uri routing
 router
-    .route('workouts:id')
+    .route('/workouts:id')
     .get(workoutsController.workoutsReadOne)
     .put(workoutsController.workoutsUpdateOne)
     .delete(workoutsController.workoutsDeleteOne);
 
+module.exports = router;

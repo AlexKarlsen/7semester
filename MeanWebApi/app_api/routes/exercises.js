@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const exercisesController = require('../controllers/exercises');
+const exercisesController = require('../controllers/exercisesController');
 
 // Collection Uri Routing
 router
@@ -10,7 +10,9 @@ router
 
 // Element Uri routing
 router
-    .route('exercises:id')
+    .route('/exercises:id')
     .get(exercisesController.exercisesReadOne)
     .put(exercisesController.exercisesUpdateOne)
     .delete(exercisesController.exercisesDeleteOne);
+
+module.exports = router;

@@ -5,7 +5,7 @@ const exerciseModel = require('exercisesModel');
 
 var workoutsSchema = new Schema({
     name: String,
-    exercise : [exerciseModel.Exercise]
+    exercises : [exerciseModel.Exercise]
 });
 
 var Workout = mongoose.Model('Workout', workoutsSchema);

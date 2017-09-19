@@ -10,9 +10,9 @@ router
 
 // Element Uri routing
 router
-    .route('/workouts:id')
+    .route('/workouts/:id')
     .get(workoutsController.workoutsReadOne)
-    .put(workoutsController.workoutsUpdateOne)
+    .post(workoutsController.workoutsUpdateOne)
     .delete(workoutsController.workoutsDeleteOne);
 
 module.exports = router;

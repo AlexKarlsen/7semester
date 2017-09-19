@@ -5,8 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
+var mongoose = require('mongoose');
 
 const index = require('./app_server/routes/index');
+const routesApiWorkouts = require('./app_api/routes/workouts');
 const users = require('./app_server/routes/users');
 
 var app = express();
@@ -24,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/api', routesApiWorkouts);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

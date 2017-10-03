@@ -1,7 +1,5 @@
-<hr>
-<div class="col-md-12" *ngIf="workout">
-    <h1>{{workout.name}} details!</h1>
-    <ul>
+<div *ngIf="workout">
+    <h3>Workout program; '{{workout.name}}'</h3>
         <table class="table">
             <tr>
                 <th>Exercise name</th>
@@ -16,5 +14,4 @@
                     <td>{{exercise.reps}}</td>
             </tr>
         </table>
-    </ul>
 </div>

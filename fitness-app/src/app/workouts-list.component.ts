@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Workout } from './workout';
 
-interface itemResponse {
+interface itemsResponse {
     results : [Workout];
 }
 
@@ -27,14 +27,14 @@ export class WorkoutsListComponent implements OnInit {
     
     ngOnInit(): void {
         // Make the HTTP request:
-        this.http.get('http://localhost:3000/api/workouts/',{observe: 'response'}).subscribe(data => {
+        this.http.get<itemsResponse>('http://localhost:3000/api/workouts/',{observe: 'response'}).subscribe(data => {
         // Read the result field from the JSON response.
-        //this.results = data['results'];
+        //this.results = data.results;
         //console.log(data.headers.get('Access-Conrtol-Allow-Origin'));
         this.results = data.body;
-        console.log(data.body);
+        //console.log(data.body);
         //console.log(data['results']);
-        //console.log(this.results);
+        console.log(this.results);
         });
     }
 

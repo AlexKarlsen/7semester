@@ -18,9 +18,6 @@ export class WorkoutFormComponent {
     onSubmit() { this.submitted = true; }
 
     newWorkout(): void {
-        
-
-        this.model = new Workout();
         console.log(this.model);
         this.http.post('http://localhost:3000/api/workouts/', this.model).subscribe();
         console.log('post request sent');

@@ -1,0 +1,11 @@
+<div *ngIf="workout">
+    <hr>
+    <div class="form-inline">
+        <input class="form-control" [(ngModel)]="model.name" placeholder="Name">
+        <input class="form-control" [(ngModel)]="model.description" placeholder="Description">
+        <input class="form-control" [(ngModel)]="model.sets" placeholder="Sets">
+        <input class="form-control" [(ngModel)]="model.reps" placeholder="Reps">
+        <button class="btn btn-default" type="submit" (click)="newExercise();"> Add an Exercise to workout </button>
+    </div>
+    <hr>
+</div>

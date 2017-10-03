@@ -1,10 +1,10 @@
 <hr>
-<div class="container">
+<div class="form-inline">
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
         <div class="form-group">
-            <input type="text" class="form-control" id="name" placeholder="New workout name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+            <input type="text" class="form-control col-md-9" id="name" placeholder="New workout name" required [(ngModel)]="model.name" name="name" #name="ngModel">
         </div>
     
-        <button type="submit" class="btn btn-default" (click)="newWorkout();"> Create </button>
+        <button type="submit" class="btn btn-default cl-md-3" (click)="newWorkout();"> Create New Workout</button>
     </form>     
 </div>

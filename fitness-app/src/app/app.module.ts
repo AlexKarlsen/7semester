@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { WorkoutsListComponent } from './workouts-list.component';
 import { WorkoutDetailComponent } from './workout-detail.component';
 import { WorkoutFormComponent } from './workout-form.component'; 
+import { ExerciseFormComponent } from './exercise-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WorkoutsListComponent,
     WorkoutDetailComponent,
-    WorkoutFormComponent
+    WorkoutFormComponent,
+    ExerciseFormComponent
   ],
   imports: [
     BrowserModule,

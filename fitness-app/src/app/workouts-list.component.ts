@@ -1,18 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-export class Workout {
-    name: string;
-    exercises : [Exercise];
-}
-
-export class Exercise {
-    name : string;
-    description : string;
-    sets : string;
-    reps : string;
-}
+import { Workout } from './workout';
 
 interface itemResponse {
     results : [Workout];
@@ -20,25 +9,18 @@ interface itemResponse {
 
 @Component({
     selector: 'workouts-list',
-    template: `
-    <ul class="workouts">
-        <li *ngFor="let workout of results">
-            <span class="badge"> {{workout.name}} </span> 
-        </li>
-    </ul>
-    `
+    templateUrl: './workouts-list.component.html',
+    styleUrls: ['./workouts-list.component.css']
 })
 
 export class WorkoutsListComponent implements OnInit {
     results;
-    workout : Workout = {
-        name: 'test',
-        exercises: [{ name: 'test', description: 'test', sets: 'test', reps : 'test'}]
-    };
+    /*
     workouts : [Workout] = [{
         name: 'test',
         exercises: [{ name: 'test', description: 'test', sets: 'test', reps : 'test'}]
     }]
+    */
 
     // Inject HttpClient into your component or service.
     constructor(private http: HttpClient) {}
@@ -51,9 +33,14 @@ export class WorkoutsListComponent implements OnInit {
         //console.log(data.headers.get('Access-Conrtol-Allow-Origin'));
         this.results = data.body;
         console.log(data.body);
-        console.log(data['results']);
-        console.log(this.results);
-        
+        //console.log(data['results']);
+        //console.log(this.results);
         });
     }
+
+    selectedWorkout: Workout;
+    
+     onSelect(workout: Workout): void {
+       this.selectedWorkout = workout;
+     }
 }

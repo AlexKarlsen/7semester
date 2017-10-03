@@ -1,0 +1,20 @@
+<hr>
+<div class="col-md-12" *ngIf="workout">
+    <h1>{{workout.name}} details!</h1>
+    <ul>
+        <table class="table">
+            <tr>
+                <th>Exercise name</th>
+                <th>Description</th>
+                <th>Sets</th>
+                <th>Reps</th>
+            </tr>
+            <tr *ngFor="let exercise of workout.exercises">            
+                    <td>{{exercise.exercise}}</td>
+                    <td>{{exercise.description}}</td>
+                    <td>{{exercise.sets}}</td>
+                    <td>{{exercise.reps}}</td>
+            </tr>
+        </table>
+    </ul>
+</div>

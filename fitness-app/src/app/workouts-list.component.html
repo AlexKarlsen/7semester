@@ -1,0 +1,11 @@
+<hr>
+<div class="col-md-12 p-3">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let workout of results"
+            [class.selected]="workout === selectedWorkout"
+            (click)="onSelect(workout)">
+            <span> {{workout.name}} </span> 
+        </li>
+    </ul>
+    <workout-detail [workout]="selectedWorkout"></workout-detail>
+</div>

@@ -22,7 +22,7 @@ export class ExerciseFormComponent{
         newExercise(): void {
             console.log(this.model);
             console.log(this.workout._id);
-            this.http.post('http://localhost:3000/api/workouts/'+this.workout._id, this.model).subscribe();
+            this.http.post('https://peaceful-temple-74079.herokuapp.com/api/workouts/'+this.workout._id, this.model).subscribe();
             console.log('post request sent');
         }
     

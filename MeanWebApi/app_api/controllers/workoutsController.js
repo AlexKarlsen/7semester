@@ -49,7 +49,7 @@ module.exports.workoutsReadOne = function(req, res){
 };
 
 module.exports.workoutsUpdateOne = function(req, res){
-    var workout = {$push: {exercises:{ exerciseName : req.body.name, description : req.body.description, sets : req.body.sets, reps : req.body.reps }}};
+    var workout = {$push: {exercises:{ exercise : req.body.exercise, description : req.body.description, sets : req.body.sets, reps : req.body.reps }}};
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var query = {_id:new ObjectID(req.params.id)};

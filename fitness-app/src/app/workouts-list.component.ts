@@ -27,13 +27,13 @@ export class WorkoutsListComponent implements OnInit {
     
     ngOnInit(): void {
         // Make the HTTP request:
-        this.http.get<itemsResponse>('http://localhost:3000/api/workouts/',{observe: 'response'}).subscribe(data => {
-        // Read the result field from the JSON response.
-        //this.results = data.results;
-        //console.log(data.headers.get('Access-Conrtol-Allow-Origin'));
+        this.http.get<itemsResponse>('https://peaceful-temple-74079.herokuapp.com/api/workouts',{observe: 'response'}).subscribe(data => {
+        
+        // Still not possible to do: 
+        //this.results = data.result;
+        // Even if {observe : 'response is removed'}
+
         this.results = data.body;
-        //console.log(data.body);
-        //console.log(data['results']);
         console.log(this.results);
         });
     }

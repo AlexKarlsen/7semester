@@ -10,6 +10,8 @@ module.exports.workoutsList = function (req, res){
             if (err) throw err;
             console.log(result);
             db.close();
+            res.header("Access-Conrtol-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
             return res.send(result);
         });
     }); 

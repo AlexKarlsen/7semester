@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 var crypto = require('crypto');
-const SALT_VALUE = 'my_salt';
+//const SALT_VALUE = 'my_salt';
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -20,7 +20,7 @@ userSchema.methods.setPassword = function(password){ this.salt = SALT_VALUE;
 };
 
 userSchema.methods.validPassword = function(password) { 
-    const hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('base64'); 
+    const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 128, 'sha512').toString('hex'); 
     return this.hash === hash;
 };
 

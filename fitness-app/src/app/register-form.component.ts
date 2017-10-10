@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from './user';
 
-//import { AuthResponse } from '';
+interface AuthResponse {
+    token : string;
+}
 
-// skal ikke være her? 
 export class Authentication
 {
     private saveToken(token:string) {

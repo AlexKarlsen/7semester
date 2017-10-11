@@ -21,11 +21,7 @@ export class ExerciseFormComponent{
     
         newExercise(): void {
             console.log(this.model);
-            console.log(this.workout._id);
             this.http.post('https://peaceful-temple-74079.herokuapp.com/api/workouts/'+this.workout._id, this.model).subscribe();
             console.log('post request sent');
         }
-    
-        // TODO: Remove this when we're done
-        //get diagnostic() { return JSON.stringify(this.model); }
 }

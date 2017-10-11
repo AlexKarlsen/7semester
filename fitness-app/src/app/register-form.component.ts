@@ -3,6 +3,30 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from './user';
 
+@Component({
+    selector: 'register-form',
+    templateUrl: './register-form.component.html',
+})
+
+export class RegisterFormComponent{
+    @Input() user: User;
+    // Inject Authentication into your component or service.
+    constructor(private http: HttpClient) {}
+    
+        auth = new Authentication(this.http);
+        model = new User();
+    
+        submitted = false;
+    
+        onSubmit() { this.submitted = true; }
+    
+        newUser(): void {
+            console.log(this.model);
+            this.auth.register(this.model);
+            console.log('post request sent');
+        }
+}
+
 interface AuthResponse {
     token : string;
 }
@@ -29,8 +53,9 @@ export class Authentication
     public register(user: User) {
         //const url = `https://peaceful-temple-74079.herokuapp.com/auth/register`;
         const url = `https://localhosts:3000/auth/register`;
+
         this.http.post<AuthResponse>(url, user).subscribe(data => {
-            console.log('Something happened');
+            console.log('Something good happened');
             this.saveToken(data.token);
             return true;
         },

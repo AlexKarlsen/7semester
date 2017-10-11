@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
-// Import HttpClientModule from @angular/common/http
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -10,6 +9,7 @@ import { WorkoutsListComponent } from './workouts-list.component';
 import { WorkoutDetailComponent } from './workout-detail.component';
 import { WorkoutFormComponent } from './workout-form.component'; 
 import { ExerciseFormComponent } from './exercise-form.component';
+import { RegisterFormComponent } from './register-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { ExerciseFormComponent } from './exercise-form.component';
     WorkoutsListComponent,
     WorkoutDetailComponent,
     WorkoutFormComponent,
-    ExerciseFormComponent
+    ExerciseFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

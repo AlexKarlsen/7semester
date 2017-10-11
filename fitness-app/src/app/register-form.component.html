@@ -1,8 +1,15 @@
 <div>
-    <form>
-        <input type="text" [(ngModel)]="model.name" placeholder="User name">
+    <!--<form>
+        <input type="text" [(ngModel)]="model.name" placeholder="User name" [ngModelOptions]="{standalone: true}">
         <input type="email" [(ngModel)]="model.email" placeholder="Email">
         <input type="password" [(ngModel)]="model.password" placeholder="Password">
-        <button class="btn btn-default" type="submit" (click)="register();"> Add an Exercise to workout </button>
-    </form>
+        <button class="btn btn-default" type="submit" (click)="newUser();"> Register user </button>
+    </form>-->
+
+    <div class="form-inline">
+            <input class="form-control" [(ngModel)]="model.name" placeholder="User name">
+            <input class="form-control" [(ngModel)]="model.email" placeholder="Email">
+            <input class="form-control" [(ngModel)]="model.password" placeholder="Password">
+            <button class="btn btn-default" type="submit" (click)="newUser();"> Register user </button>
+        </div>
 </div>

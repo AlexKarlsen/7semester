@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { AppComponent } from './app.component';
 import { WorkoutsListComponent } from './workouts-list.component';
 import { WorkoutDetailComponent } from './workout-detail.component';
 import { WorkoutFormComponent } from './workout-form.component'; 
 import { ExerciseFormComponent } from './exercise-form.component';
 import { RegisterFormComponent } from './register-form.component';
+import { LoginFormComponent } from './login-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { RegisterFormComponent } from './register-form.component';
     WorkoutDetailComponent,
     WorkoutFormComponent,
     ExerciseFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

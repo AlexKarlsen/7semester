@@ -7,7 +7,7 @@ interface AuthResponse {
     token : string;
 }
 
-// Is a service like described in 
+// Is an injectable service like described in 
 // https://angular.io/tutorial/toh-pt4
 @Injectable()
 export class AuthenticationService
@@ -109,7 +109,7 @@ export class AuthenticationService
             {
                 // The backend returned an unsuccessful response code.
                 // The response body may contain clues as to what went wrong,
-                console.log('Backend returned code' + err.status + ', body was: ' + err.error);
+                console.log('Backend returned code ' + err.status + ', body was: ' + err.error);
             }
             return false;
         });

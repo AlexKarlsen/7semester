@@ -10,6 +10,8 @@ export class Authentication
 {
     model = new User();
 
+    //isLoggedInBool = this.isLoggedIn();
+
     private saveToken(token:string) {
         window.localStorage['JW-token'] = token;
     }
@@ -23,8 +25,8 @@ export class Authentication
         }
     }
 
-    private deleteToken() {
-        window.localStorage['JW-token'].deleteToken;
+    public deleteToken() {
+        window.localStorage.removeItem('JW-token');
     }
 
     public isLoggedIn() {

@@ -10,12 +10,14 @@ import { Authentication } from './authentication';
 
 export class LoginFormComponent{
     @Input() user: User;
-    // Inject Authentication into your component or service.
+    
     constructor(private http: HttpClient) {}
     
         auth = new Authentication(this.http);
         model = new User();
-    
+
+        isLoggedInBool = this.auth.isLoggedIn();
+
         submitted = false;
     
         onSubmit() { this.submitted = true; }
@@ -23,6 +25,14 @@ export class LoginFormComponent{
         newUser(): void {
             console.log(this.model);
             this.auth.login(this.model);
-            console.log('post request sent');
+
+            //Should check if login failed before setting this
+            this.isLoggedInBool = true;
+        }
+
+        logout(): void {
+            this.auth.deleteToken();
+
+            this.isLoggedInBool = false;
         }
 }

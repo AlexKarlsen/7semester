@@ -52,7 +52,7 @@ export class Authentication
 
     public register(user: User) {
         //const url = `https://peaceful-temple-74079.herokuapp.com/auth/register`;
-        const url = `https://localhosts:3000/auth/register`;
+        const url = 'http://localhost:3000/auth/register';
 
         this.http.post<AuthResponse>(url, user).subscribe(data => {
             console.log('Something good happened');

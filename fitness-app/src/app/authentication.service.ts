@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from './user';
+import { Injectable } from '@angular/core';
 
 interface AuthResponse {
     token : string;
 }
 
-export class Authentication
+// Is a service like described in 
+// https://angular.io/tutorial/toh-pt4
+@Injectable()
+export class AuthenticationService
 {
     model = new User();
-
-    //isLoggedInBool = this.isLoggedIn();
 
     private saveToken(token:string) {
         window.localStorage['JW-token'] = token;
@@ -32,8 +34,10 @@ export class Authentication
     public isLoggedIn() {
         const token = this.getToken();
         if(token) {
-            const payload = JSON.parse(window.atob(token.split('.')[1]));
-            return payload.exp > Date.now() / 1000;
+            //const payload = JSON.parse(window.atob(token.split('.')[1]));
+            //return payload.exp > Date.now() / 1000;
+            // idk why that needs to be that complex. Am I not logged in if a token exists?
+            return true;
         } 
         else {
             return false;
@@ -55,7 +59,11 @@ export class Authentication
         }
     }
 
-    constructor(private http: HttpClient) {}
+    isLoggedInBool = false;
+
+    constructor(private http: HttpClient) {
+        this.isLoggedInBool = this.isLoggedIn();
+    }
 
     public register(user: User) {
         //const url = `https://peaceful-temple-74079.herokuapp.com/auth/register`;

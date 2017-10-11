@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
-import { Authentication } from './authentication';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
     selector: 'login-form',
@@ -11,13 +11,16 @@ import { Authentication } from './authentication';
 export class LoginFormComponent{
     @Input() user: User;
     
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private auth: AuthenticationService) {
+        //this.isLoggedInBool = this.auth.isLoggedIn();
+        //console.log(this.auth.isLoggedIn());
+    }
     
-        auth = new Authentication(this.http);
+        //auth = new Authentication(this.http);
         model = new User();
 
-        isLoggedInBool = this.auth.isLoggedIn();
-
+        //isLoggedInBool = false;
+        
         submitted = false;
     
         onSubmit() { this.submitted = true; }
@@ -27,12 +30,12 @@ export class LoginFormComponent{
             this.auth.login(this.model);
 
             //Should check if login failed before setting this
-            this.isLoggedInBool = true;
+            this.auth.isLoggedInBool = true;
         }
 
         logout(): void {
             this.auth.deleteToken();
 
-            this.isLoggedInBool = false;
+            this.auth.isLoggedInBool = false;
         }
 }

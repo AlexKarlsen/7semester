@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
-import { Authentication } from './authentication';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
     selector: 'register-form',
@@ -11,9 +11,7 @@ import { Authentication } from './authentication';
 export class RegisterFormComponent{
     @Input() user: User;
     // Inject Authentication into your component or service.
-    constructor(private http: HttpClient) {}
-    
-        auth = new Authentication(this.http);
+    constructor(private http: HttpClient, private auth: AuthenticationService) {}
         model = new User();
     
         submitted = false;
@@ -23,6 +21,7 @@ export class RegisterFormComponent{
         newUser(): void {
             console.log(this.model);
             this.auth.register(this.model);
+            this.auth.isLoggedInBool = true;
             console.log('post request sent');
         }
 }

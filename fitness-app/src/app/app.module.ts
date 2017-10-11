@@ -10,6 +10,7 @@ import { WorkoutFormComponent } from './workout-form.component';
 import { ExerciseFormComponent } from './exercise-form.component';
 import { RegisterFormComponent } from './register-form.component';
 import { LoginFormComponent } from './login-form.component';
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { LoginFormComponent } from './login-form.component';
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)
     HttpClientModule, // After browser module
   ],
-  providers: [],
+  providers: [AuthenticationService], // provide AuthenticationService for dependency injection
   bootstrap: [AppComponent]
 })
 export class AppModule { }

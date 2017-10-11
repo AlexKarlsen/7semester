@@ -9,6 +9,8 @@ interface AuthResponse {
 
 export class Authentication
 {
+    model = new User();
+
     private saveToken(token:string) {
         window.localStorage['JW-token'] = token;
     }

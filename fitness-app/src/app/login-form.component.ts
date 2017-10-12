@@ -22,9 +22,9 @@ export class LoginFormComponent{
     
         onSubmit() { this.submitted = true; }
     
-        newUser(): void {
+        login(): void {
             console.log(this.model);
-            this.login(this.model);
+            this.authenticate(this.model);
 
             //Should check if login failed before setting this
             this.auth.isLoggedInBool = true;
@@ -36,7 +36,7 @@ export class LoginFormComponent{
             this.auth.isLoggedInBool = false;
         }
 
-        private login(user: User) {
+        private authenticate(user: User) {
             //const url = `https://peaceful-temple-74079.herokuapp.com/auth/login`;
             const url = 'http://localhost:3000/auth/login';
     

@@ -20,7 +20,8 @@ export class WorkoutFormComponent {
 
     newWorkout(): void {
         console.log(this.model);
-        this.http.post('https://peaceful-temple-74079.herokuapp.com/api/workouts', this.model).subscribe();
+        //this.http.post('https://peaceful-temple-74079.herokuapp.com/api/workouts', this.model).subscribe();
+        this.http.post('http://localhost:3000/api/workouts', this.model).subscribe();        
         console.log('post request sent');
     }
 

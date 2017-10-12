@@ -25,9 +25,6 @@ export class LoginFormComponent{
         newUser(): void {
             console.log(this.model);
             this.login(this.model);
-
-            //Should check if login failed before setting this
-            this.auth.isLoggedInBool = true;
         }
 
         logout(): void {
@@ -37,12 +34,13 @@ export class LoginFormComponent{
         }
 
         private login(user: User) {
-            //const url = `https://peaceful-temple-74079.herokuapp.com/auth/login`;
+            //const url = 'https://peaceful-temple-74079.herokuapp.com/auth/login';
             const url = 'http://localhost:3000/auth/login';
     
             this.http.post<AuthResponse>(url, user).subscribe(data => {
                 console.log('Something good happened');
                 this.auth.saveToken(data.token);
+                this.auth.isLoggedInBool = true;
                 return true;
             },
             // Errors will call this callback instead:

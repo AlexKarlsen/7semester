@@ -25,17 +25,17 @@ export class RegisterFormComponent{
     newUser(): void {
         console.log(this.model);
         this.register(this.model);
-        this.auth.isLoggedInBool = true;
         console.log('post request sent');
     }
 
     private register(user: User) {
-        //const url = `https://peaceful-temple-74079.herokuapp.com/auth/register`;
+        //const url = 'https://peaceful-temple-74079.herokuapp.com/auth/register';
         const url = 'http://localhost:3000/auth/register';
 
         this.http.post<AuthResponse>(url, user).subscribe(data => {
             console.log('Something good happened');
             this.auth.saveToken(data.token);
+            this.auth.isLoggedInBool = true;
             return true;
         },
         // Errors will call this callback instead:

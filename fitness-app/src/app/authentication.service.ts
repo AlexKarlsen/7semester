@@ -1,11 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
+//import { HttpErrorResponse } from '@angular/common/http';
 import { User } from './user';
 import { Injectable } from '@angular/core';
-
-interface AuthResponse {
-    token : string;
-}
 
 // Is an injectable service like described in 
 // https://angular.io/tutorial/toh-pt4
@@ -13,8 +9,13 @@ interface AuthResponse {
 export class AuthenticationService
 {
     model = new User();
+    isLoggedInBool = false;
+    
+    constructor() {
+        this.isLoggedInBool = this.isLoggedIn();
+    }
 
-    private saveToken(token:string) {
+    public saveToken(token:string) {
         window.localStorage['JW-token'] = token;
     }
 
@@ -57,61 +58,5 @@ export class AuthenticationService
         else { 
             return; 
         }
-    }
-
-    isLoggedInBool = false;
-
-    constructor(private http: HttpClient) {
-        this.isLoggedInBool = this.isLoggedIn();
-    }
-
-    public register(user: User) {
-        //const url = `https://peaceful-temple-74079.herokuapp.com/auth/register`;
-        const url = 'http://localhost:3000/auth/register';
-
-        this.http.post<AuthResponse>(url, user).subscribe(data => {
-            console.log('Something good happened');
-            this.saveToken(data.token);
-            return true;
-        },
-        // Errors will call this callback instead:
-        (err: HttpErrorResponse) => {
-            if(err.error instanceof Error) {
-                // A client - side or network error occurred. Handle it accordingly.
-                console.log('An error occurred: ', err.error.message);
-            } 
-            else
-            {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
-                console.log('Backend returned code ' + err.status + ', body was: ' + err.error);
-            }
-            return false;
-        });
-    }
-
-    public login(user: User) {
-        //const url = `https://peaceful-temple-74079.herokuapp.com/auth/login`;
-        const url = 'http://localhost:3000/auth/login';
-
-        this.http.post<AuthResponse>(url, user).subscribe(data => {
-            console.log('Something good happened');
-            this.saveToken(data.token);
-            return true;
-        },
-        // Errors will call this callback instead:
-        (err: HttpErrorResponse) => {
-            if(err.error instanceof Error) {
-                // A client - side or network error occurred. Handle it accordingly.
-                console.log('An error occurred:', err.error.message);
-            } 
-            else
-            {
-                // The backend returned an unsuccessful response code.
-                // The response body may contain clues as to what went wrong,
-                console.log('Backend returned code ' + err.status + ', body was: ' + err.error);
-            }
-            return false;
-        });
     }
 }

@@ -27,8 +27,9 @@ export class WorkoutsListComponent implements OnInit {
     
     ngOnInit(): void {
         // Make the HTTP request:
-        this.http.get<itemsResponse>('https://peaceful-temple-74079.herokuapp.com/api/workouts',{observe: 'response'}).subscribe(data => {
-        
+        //this.http.get<itemsResponse>('https://peaceful-temple-74079.herokuapp.com/api/workouts',{observe: 'response'}).subscribe(data => {
+        this.http.get<itemsResponse>('http://localhost:3000/api/workouts',{observe: 'response'}).subscribe(data => {
+                
         // Still not possible to do: 
         //this.results = data.result;
         // Even if {observe : 'response is removed'}

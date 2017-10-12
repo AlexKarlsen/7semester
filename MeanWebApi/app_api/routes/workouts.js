@@ -10,14 +10,14 @@ var auth = jwt({
 // Collection Uri Routing
 router
     .route('/workouts')
-    .get(workoutsController.workoutsList, auth)
-    .post(workoutsController.workoutsCreate, auth);
+    .get(workoutsController.workoutsList)
+    .post(auth, workoutsController.workoutsCreate);
 
 // Element Uri routing
 router
     .route('/workouts/:id')
-    .get(workoutsController.workoutsReadOne, auth)
-    .post(workoutsController.workoutsUpdateOne, auth)
-    .delete(workoutsController.workoutsDeleteOne, auth);
+    .get(workoutsController.workoutsReadOne)
+    .post(auth, workoutsController.workoutsUpdateOne)
+    .delete(auth, workoutsController.workoutsDeleteOne);
 
 module.exports = router;

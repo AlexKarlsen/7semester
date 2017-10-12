@@ -2,7 +2,7 @@
     <div class="form-inline">
             <input class="form-control" [(ngModel)]="model.email" placeholder="Email">
             <input class="form-control" [(ngModel)]="model.password" placeholder="Password">
-            <button class="btn btn-default" type="submit" (click)="login();"> Login </button>
+            <button class="btn btn-default" type="submit" (click)="newUser();"> Login </button>
     </div>
 </div>
 <div *ngIf="auth.isLoggedInBool">

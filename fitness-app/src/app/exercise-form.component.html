@@ -1,4 +1,4 @@
-<div *ngIf="workout">
+<div *ngIf="workout && auth.isLoggedInBool">
     <hr>
     <div class="form-inline">
         <input class="form-control" [(ngModel)]="model.exercise" placeholder="Name">

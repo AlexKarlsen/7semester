@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Workout }    from './workout';
 import { HttpClient } from '@angular/common/http';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
     selector: 'workout-form',
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class WorkoutFormComponent {
     // Inject HttpClient into your component or service.
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private auth: AuthenticationService) {}
 
     model = new Workout();
 

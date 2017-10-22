@@ -1,0 +1,6 @@
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\bin\Debug\netcoreapp1.1\Stockmanager.deps.json
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\bin\Debug\netcoreapp1.1\Stockmanager.runtimeconfig.json
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\bin\Debug\netcoreapp1.1\Stockmanager.runtimeconfig.dev.json
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\bin\Debug\netcoreapp1.1\Stockmanager.dll
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\obj\Debug\netcoreapp1.1\Stockmanager.csprojResolveAssemblyReference.cache
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\obj\Debug\netcoreapp1.1\Stockmanager.AssemblyInfo.cs

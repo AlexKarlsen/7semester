@@ -31,5 +31,7 @@ namespace Stockmanager.Models
         public DbSet<Component> Component { get; set; }
 
         public DbSet<Stockmanager.Models.ComponentType> ComponentType { get; set; }
+
+        public DbSet<CategoryComponentType> CategoryComponentType { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace Stockmanager.Models
     public class CategoryComponentType
     {
         public long CategoryId { get; set; }
-        //public Category Category { get; set; }
+        public Category Category { get; set; }
 
         public long ComponentTypeId { get; set; }
-        //public ComponentType ComponentType { get; set; }
+        public ComponentType ComponentType { get; set; }
     }
 }

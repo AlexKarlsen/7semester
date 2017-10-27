@@ -18,8 +18,7 @@ namespace Stockmanager.Repositories
 
         public async Task<IEnumerable> ListComponentTypesForACategory(long categoryId)
         {
-            return null;
-            //return await Context.Set<ComponentType>().Select(m => m.Categories.Where(c => c.CategoryId == categoryId)).ToListAsync();
+            return await Context.Set<CategoryComponentType>().Include(c => c.ComponentType).Where(Ca => Ca.CategoryId == categoryId).Select(c => c.ComponentType).ToListAsync();
         }
     }
 }

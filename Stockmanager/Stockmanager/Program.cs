@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Stockmanager.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Stockmanager
 {

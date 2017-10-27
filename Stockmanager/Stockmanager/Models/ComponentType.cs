@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Stockmanager.Models
 {
@@ -7,7 +8,7 @@ namespace Stockmanager.Models
         public ComponentType()
         {
             Components = new List<Component>();
-            Categories = new List<Category>();
+            CategoryComponentType = new List<CategoryComponentType>();
         }
 
         public long ComponentTypeId { get; set; }
@@ -21,8 +22,18 @@ namespace Stockmanager.Models
         public string WikiLink { get; set; }
         public string AdminComment { get; set; }
         public virtual ESImage Image { get; set; }
+
         public ICollection<Component> Components { get; protected set; }
-        public ICollection<Category> Categories { get; protected set; }
+        public ICollection<CategoryComponentType> CategoryComponentType { get; protected set; }
+    }
+
+    public class ESImage
+    {
+        public long ESImageId { get; set; }
+        [MaxLength(128)]
+        public string ImageMimeType { get; set; }
+        public byte[] Thumbnail { get; set; }
+        public byte[] ImageData { get; set; }
     }
 
     public enum ComponentTypeStatus

@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Stockmanager.Models;
+using Stockmanager.Interfaces;
+using Stockmanager.Repositories;
 
 namespace Stockmanager
 {
@@ -29,6 +33,14 @@ namespace Stockmanager
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddDbContext<StockmanagerContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("StockmanagerContext")));
+
+            //services.AddTransient<IRepository,Repository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IComponentRepository, ComponentRepository>();
+            services.AddScoped<IComponentTypeRepository, ComponentTypeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

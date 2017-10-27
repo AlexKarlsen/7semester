@@ -4,3 +4,6 @@ C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\bin\Debug\netcor
 C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\bin\Debug\netcoreapp1.1\Stockmanager.dll
 C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\obj\Debug\netcoreapp1.1\Stockmanager.csprojResolveAssemblyReference.cache
 C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\obj\Debug\netcoreapp1.1\Stockmanager.AssemblyInfo.cs
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\bin\Debug\netcoreapp1.1\Stockmanager.pdb
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\obj\Debug\netcoreapp1.1\Stockmanager.dll
+C:\Users\63664\Source\Repos\7semester\Stockmanager\Stockmanager\obj\Debug\netcoreapp1.1\Stockmanager.pdb

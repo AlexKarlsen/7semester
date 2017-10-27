@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 
 namespace Stockmanager.Interfaces
 {
-    interface IRepository<IEntity> where IEntity : class
+    public interface IRepository<IEntity> where IEntity : class
     {
-        void Add(IEntity entity);
-        void Update(IEntity entity);
+        Task<IEntity> GetOneAsync(long id);
+        Task<IEnumerable<IEntity>> GetAllAsync();
+        Task AddAsync(IEntity entity);
 
         // Not sure to implement update at this level?
-        void Delete(IEntity entity);
+        Task UpdateAsync(IEntity entity);
+        Task DeleteAsync(IEntity entity);
     }
 }

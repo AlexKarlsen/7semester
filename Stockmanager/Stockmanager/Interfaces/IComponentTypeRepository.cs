@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Stockmanager.Interfaces
 {
-    interface IComponentTypeRepository : IRepository<ComponentType>
+    public interface IComponentTypeRepository : IRepository<ComponentType>
     {
-        IEnumerable ListComponent(Category category);
+        Task<IEnumerable> ListComponentTypesForACategory(long categoryId);
     }
 }

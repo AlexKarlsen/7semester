@@ -9,12 +9,12 @@ namespace Stockmanager.Models
     {
         public Category()
         {
-            ComponentTypes = new List<ComponentType>();
+            CategoryComponentType = new List<CategoryComponentType>();
         }
 
-        public int CategoryId { get; set; }
+        public long CategoryId { get; set; }
         public string Name { get; set; }
-        public ICollection<ComponentType> ComponentTypes { get; protected set; }
+        public ICollection<CategoryComponentType> CategoryComponentType { get; protected set; }
 
     }
 }

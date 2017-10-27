@@ -5,14 +5,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Stockmanager.Models;
 using System.Collections;
+using Microsoft.EntityFrameworkCore;
 
 namespace Stockmanager.Repositories
 {
     public class ComponentTypeRepository : Repository<ComponentType>, IComponentTypeRepository
     {
-        public IEnumerable ListComponent(Category category)
+        public ComponentTypeRepository(StockmanagerContext context) : base(context)
         {
-            throw new NotImplementedException();
+
+        }
+
+        public async Task<IEnumerable> ListComponentTypesForACategory(long categoryId)
+        {
+            return null;
+            //return await Context.Set<ComponentType>().Select(m => m.Categories.Where(c => c.CategoryId == categoryId)).ToListAsync();
         }
     }
 }

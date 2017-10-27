@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Stockmanager.Interfaces;
+using Stockmanager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +13,37 @@ namespace Stockmanager.Repositories
     {
         protected readonly DbContext Context;
 
-        public void Add(IEntity entity)
+        public Repository(StockmanagerContext context)
         {
-            Context.Set<IEntity>().Add(entity);
+            Context = context;
         }
 
-        public void Delete(IEntity entity)
+        public async Task AddAsync(IEntity entity)
+        {
+            await Context.Set<IEntity>().AddAsync(entity);
+            await Context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(IEntity entity)
         {
             Context.Set<IEntity>().Remove(entity);
+            await Context.SaveChangesAsync();
         }
 
-        public void Update(IEntity entity)
+        public async Task<IEnumerable<IEntity>> GetAllAsync()
+        {
+            return await Context.Set<IEntity>().ToListAsync();
+        }
+
+        public async Task<IEntity> GetOneAsync(long id)
+        {
+            return await Context.Set<IEntity>().FindAsync(id);
+        }
+
+        public async Task UpdateAsync(IEntity entity)
         {
             Context.Set<IEntity>().Update(entity);
+            await Context.SaveChangesAsync();
         }
     }
 }

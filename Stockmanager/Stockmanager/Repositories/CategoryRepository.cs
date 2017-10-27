@@ -4,15 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections;
 
 namespace Stockmanager.Repositories
 {
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
-        public IEnumerable ListComponents(Category category)
+        public CategoryRepository(StockmanagerContext context) : base(context)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

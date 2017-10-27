@@ -8,6 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Stockmanager.Models;
 using Stockmanager.Interfaces;
 
+
+/* Qustions for PER
+ * - Routing parameters are not set why?
+ * - Category - ComponentType Many-to-Many how to create the 2nd entity
+ * - ComponentType - Component One-o-Many how to create the 2nd with foreign to to the 1st 
+     */
+
 namespace Stockmanager.Controllers
 {
     public class ComponentsController : Controller
@@ -22,6 +29,7 @@ namespace Stockmanager.Controllers
         // GET: Components
         public async Task<IActionResult> Index(long componentTypeId)
         {
+            componentTypeId = 1;
             return View(await _repository.ListComponentsForAComponentType(componentTypeId));
         }
 

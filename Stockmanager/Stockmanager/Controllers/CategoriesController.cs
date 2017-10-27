@@ -21,17 +21,17 @@ namespace Stockmanager.Controllers
         }
 
         // GET: Categories
-        public async Task<IActionResult> ListCategories()
+        public async Task<IActionResult> Index()
         {
-            try
+            //try
             {
                 return View(await _repository.GetAllAsync());
             }
-            catch (NullReferenceException)
-            {
+            //catch (NullReferenceException)
+            //{
 
-                return View(new List<Category>());
-            }
+            //    return View(new List<Category>());
+            //}
 
         }
 

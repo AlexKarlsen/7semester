@@ -25,8 +25,14 @@ namespace Stockmanager.Models
 
         public ICollection<Component> Components { get; protected set; }
         public ICollection<CategoryComponentType> CategoryComponentType { get; protected set; }
-    }
+        
 
+    }
+    public enum ComponentTypeStatus
+    {
+        Available,
+        ReservedAdmin
+    }
     public class ESImage
     {
         public long ESImageId { get; set; }
@@ -34,11 +40,5 @@ namespace Stockmanager.Models
         public string ImageMimeType { get; set; }
         public byte[] Thumbnail { get; set; }
         public byte[] ImageData { get; set; }
-    }
-
-    public enum ComponentTypeStatus
-    {
-        Available,
-        ReservedAdmin
     }
 }

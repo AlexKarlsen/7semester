@@ -22,6 +22,7 @@ namespace Stockmanager.Controllers
         // GET: ComponentTypes
         public async Task<IActionResult> Index(long categoryId)
         {
+            categoryId = 1;
             return View(await _repository.ListComponentTypesForACategory(categoryId));
         }
 

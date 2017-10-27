@@ -46,7 +46,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ComponentName)
+                <a asp-controller="Components" asp-action="Index" asp-route-id="@item.ComponentTypeId">@Html.DisplayFor(modelItem => item.ComponentName)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ComponentInfo)

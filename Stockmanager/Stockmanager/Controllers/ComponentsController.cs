@@ -27,10 +27,10 @@ namespace Stockmanager.Controllers
         }
 
         // GET: Components
-        public async Task<IActionResult> Index(long componentTypeId)
+        public async Task<IActionResult> Index(long id)
         {
-            componentTypeId = 1;
-            return View(await _repository.ListComponentsForAComponentType(componentTypeId));
+            ViewData["componentTypeId"] = id;
+            return View(await _repository.ListComponentsForAComponentType(id));
         }
 
         // GET: Components/Details/5
@@ -48,6 +48,8 @@ namespace Stockmanager.Controllers
         // GET: Components/Create
         public IActionResult Create()
         {
+            var componentTypeId = HttpContext.Request.Query["componentTypeId"];
+            ViewData["componentTypeId"] = componentTypeId;
             return View();
         }
 
@@ -56,10 +58,11 @@ namespace Stockmanager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ComponentId,ComponentTypeId,ComponentNumber,SerialNo,Status,AdminComment,UserComment,CurrentLoanInformationId")] Component component)
+        public async Task<IActionResult> Create([Bind("ComponentId,ComponentTypeId,ComponentNumber,SerialNo,Status,AdminComment,UserComment,CurrentLoanInformationId")] Component component, long componentTypeId)
         {
             if (ModelState.IsValid)
             {
+                component.ComponentTypeId = componentTypeId;
                 await _repository.AddAsync(component);
                 return RedirectToAction("Index");
             }

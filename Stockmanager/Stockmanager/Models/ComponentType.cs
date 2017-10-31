@@ -24,7 +24,7 @@ namespace Stockmanager.Models
         public virtual ESImage Image { get; set; }
 
         public ICollection<Component> Components { get; protected set; }
-        public ICollection<CategoryComponentType> CategoryComponentType { get; protected set; }
+        public ICollection<CategoryComponentType> CategoryComponentType { get; set; }
         
 
     }

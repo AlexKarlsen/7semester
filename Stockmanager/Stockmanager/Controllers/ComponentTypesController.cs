@@ -16,14 +16,14 @@ namespace Stockmanager.Controllers
 
         public ComponentTypesController(IComponentTypeRepository repository)
         {
-            _repository = repository;    
+            _repository = repository;
         }
 
-        // GET: ComponentTypes
-        public async Task<IActionResult> Index(long categoryId)
+        // GET: ComponentTypes/5
+        public async Task<IActionResult> Index(long id)
         {
-            categoryId = 1;
-            return View(await _repository.ListComponentTypesForACategory(categoryId));
+            ViewData["CategoryId"] = id.ToString();
+            return View(await _repository.ListComponentTypesForACategory(id));
         }
 
         // GET: ComponentTypes/Details/5
@@ -40,8 +40,15 @@ namespace Stockmanager.Controllers
 
         // GET: ComponentTypes/Create
         public IActionResult Create()
-        {
-            return View();
+        { 
+
+            var categoryId = HttpContext.Request.Query["categoryId"].ToString();
+            long.TryParse(categoryId, out long categoryIdLong);
+            CategoryComponentType CategoryComponentType = new CategoryComponentType() { CategoryId = categoryIdLong };
+            var ComponentType = new ComponentType() { CategoryComponentType = new List<CategoryComponentType>() { CategoryComponentType } };
+            
+            ViewData["CategoryId"] = categoryId;
+            return View(ComponentType);
         }
 
         // POST: ComponentTypes/Create
@@ -49,10 +56,11 @@ namespace Stockmanager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ComponentTypeId,ComponentName,ComponentInfo,Locaton,Status,Datasheet,ImageUrl,Manufacturer,WikiLink,AdminComment")] ComponentType componentType)
+        public async Task<IActionResult> Create([Bind("ComponentTypeId,ComponentName,ComponentInfo,Locaton,Status,Datasheet,ImageUrl,Manufacturer,WikiLink,AdminComment,CategoryComponentType")] ComponentType componentType)
         {
             if (ModelState.IsValid)
             {
+                componentType.CategoryComponentType.FirstOrDefault().ComponentTypeId = componentType.ComponentTypeId;
                 await _repository.AddAsync(componentType);
                 return RedirectToAction("Index");
             }

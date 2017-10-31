@@ -5,7 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.ComponentId</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
@@ -56,6 +56,7 @@
                 <span asp-validation-for="CurrentLoanInformationId" class="text-danger"></span>
             </div>
         </div>
+        <input asp-for="ComponentTypeId" value=@ViewData["componentTypeId"] type="hidden" />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

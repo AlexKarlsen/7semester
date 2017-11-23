@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Options;
 using Stockmanager.Interfaces;
 using Stockmanager.Models;
@@ -18,10 +19,11 @@ namespace Stockmanager.Repositories
             Context = context;
         }
 
-        public async Task AddAsync(IEntity entity)
+        public async Task<EntityEntry> AddAsync(IEntity entity)
         {
-            await Context.Set<IEntity>().AddAsync(entity);
+            var x = await Context.Set<IEntity>().AddAsync(entity);
             await Context.SaveChangesAsync();
+            return x;
         }
 
         public async Task DeleteAsync(IEntity entity)

@@ -13,10 +13,12 @@ namespace Stockmanager.Controllers
     public class ComponentTypesController : Controller
     {
         private readonly IComponentTypeRepository _repository;
+        private readonly ICategoryComponentTypesRepository _mappingRepository;
 
-        public ComponentTypesController(IComponentTypeRepository repository)
+        public ComponentTypesController(IComponentTypeRepository repository, ICategoryComponentTypesRepository mappingRepository)
         {
             _repository = repository;
+            _mappingRepository = mappingRepository;
         }
 
         // GET: ComponentTypes/5
@@ -44,10 +46,8 @@ namespace Stockmanager.Controllers
 
             var categoryId = HttpContext.Request.Query["categoryId"].ToString();
             long.TryParse(categoryId, out long categoryIdLong);
-            CategoryComponentType CategoryComponentType = new CategoryComponentType() { CategoryId = categoryIdLong };
-            var ComponentType = new ComponentType() { CategoryComponentType = new List<CategoryComponentType>() { CategoryComponentType } };
-            
-            ViewData["CategoryId"] = categoryId;
+            var ComponentType = new ComponentType() { CategoryId = categoryIdLong };
+            //ViewData["CategoryId"] = categoryId;
             return View(ComponentType);
         }
 
@@ -56,13 +56,16 @@ namespace Stockmanager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ComponentTypeId,ComponentName,ComponentInfo,Locaton,Status,Datasheet,ImageUrl,Manufacturer,WikiLink,AdminComment,CategoryComponentType")] ComponentType componentType)
+        public async Task<IActionResult> Create([Bind("ComponentTypeId,ComponentName,ComponentInfo,Locaton,Status,Datasheet,ImageUrl,Manufacturer,WikiLink,AdminComment,CategoryId")] ComponentType componentType)
         {
             if (ModelState.IsValid)
             {
-                componentType.CategoryComponentType.FirstOrDefault().ComponentTypeId = componentType.ComponentTypeId;
-                await _repository.AddAsync(componentType);
-                return RedirectToAction("Index");
+                //componentType.CategoryComponentType.FirstOrDefault().ComponentTypeId = componentType.ComponentTypeId;
+                var trackedChanges = await _repository.AddAsync(componentType);
+                var newComponentType = trackedChanges.Entity as ComponentType;
+                var mapCategoryComponentType = new CategoryComponentType() { CategoryId = componentType.CategoryId, ComponentTypeId = newComponentType.ComponentTypeId };
+                await _mappingRepository.AddAsync(mapCategoryComponentType);
+                return RedirectToAction("Index", new { id = componentType.CategoryId });
             }
             return View(componentType);
         }

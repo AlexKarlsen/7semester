@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Stockmanager.Models
 {
@@ -26,7 +27,8 @@ namespace Stockmanager.Models
         public ICollection<Component> Components { get; protected set; }
         public ICollection<CategoryComponentType> CategoryComponentType { get; set; }
         
-
+        [NotMapped]
+        public long CategoryId { get; set; }
     }
     public enum ComponentTypeStatus
     {

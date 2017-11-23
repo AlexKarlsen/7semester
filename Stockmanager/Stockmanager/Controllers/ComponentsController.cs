@@ -64,7 +64,7 @@ namespace Stockmanager.Controllers
             {
                 component.ComponentTypeId = componentTypeId;
                 await _repository.AddAsync(component);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = componentTypeId });
             }
             return View(component);
         }

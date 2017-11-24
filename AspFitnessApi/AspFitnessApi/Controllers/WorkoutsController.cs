@@ -36,7 +36,7 @@ namespace AspFitnessApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var workout = await _context.Workout.SingleOrDefaultAsync(m => m.WorkoutId == id);
+            var workout = _context.Workout.Include(w => w.Exercises).Where(w => w.WorkoutId == id);
 
             if (workout == null)
             {

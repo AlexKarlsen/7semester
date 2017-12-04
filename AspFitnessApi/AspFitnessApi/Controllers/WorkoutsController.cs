@@ -82,7 +82,7 @@ namespace AspFitnessApi.Controllers
             return NoContent();
         }
 
-        //[Authorize]
+        [Authorize]
         // POST: api/Workouts
         [HttpPost]
         public async Task<IActionResult> PostWorkout([FromBody] Workout workout)

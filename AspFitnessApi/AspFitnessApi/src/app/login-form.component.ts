@@ -41,7 +41,8 @@ export class LoginFormComponent{
 
             this._httpService.post('/api/accounts/login', user).subscribe(data => {
               console.log('Something good happened');
-                //this.auth.saveToken(data.token);
+              this.auth.saveToken(data.json());
+              console.log(data.json());
                 this.auth.isLoggedInBool = true;
                 return true;
             },

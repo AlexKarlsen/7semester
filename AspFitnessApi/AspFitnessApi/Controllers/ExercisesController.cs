@@ -90,7 +90,7 @@ namespace AspFitnessApi.Controllers
             return NoContent();
         }
 
-        // [Authorize]
+        [Authorize]
         // POST: api/Exercises
         [HttpPost]
         public async Task<IActionResult> PostExercise([FromRoute] Guid workoutId, [FromBody] Exercise exercise)

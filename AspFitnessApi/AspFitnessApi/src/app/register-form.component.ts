@@ -35,7 +35,7 @@ export class RegisterFormComponent{
 
         this.http.post(url, user).subscribe(data => {
             console.log('Something good happened');
-            //this.auth.saveToken(data.token);
+            this.auth.saveToken(data.json());
             this.auth.isLoggedInBool = true;
             return true;
         },

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using AspFitnessApi.Models;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace AspFitnessApi.Controllers
 {
@@ -34,7 +38,7 @@ namespace AspFitnessApi.Controllers
             var userCreationResult = await _userManager.CreateAsync(newUser, dtoUser.Password);
             if (userCreationResult.Succeeded)
             {
-                return Ok(newUser);
+                return new ObjectResult(GenerateToken(dtoUser.Email));
             }
             foreach (var error in userCreationResult.Errors)
                 ModelState.AddModelError(string.Empty, error.Description);
@@ -47,7 +51,7 @@ namespace AspFitnessApi.Controllers
             var passwordSignInResult = await _signInManager.PasswordSignInAsync(dtoUser.Email, dtoUser.Password, isPersistent: false, lockoutOnFailure: false);
             if (passwordSignInResult.Succeeded)
             {
-                return Ok();
+                return new ObjectResult(GenerateToken(dtoUser.Email));
             }
             ModelState.AddModelError(string.Empty, "Invalid login");
             return BadRequest(ModelState);
@@ -59,7 +63,22 @@ namespace AspFitnessApi.Controllers
             await _signInManager.SignOutAsync();
             return Ok();
         }
-    }
+
+        private string GenerateToken(string username)
+        {
+            var claims = new Claim[] {
+            new Claim(ClaimTypes.Name, username),
+            new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds().ToString()),
+            new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(DateTime.Now.AddDays(1)).ToUnixTimeSeconds().ToString()),
+            };
+            var token = new JwtSecurityToken(
+            new JwtHeader(new SigningCredentials(
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes("The secret that needs to be at least 16 characeterslong for HmacSha256")),
+                SecurityAlgorithms.HmacSha256)),
+                new JwtPayload(claims));
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+  }
 
     public class DtoUser
     {
@@ -67,4 +86,6 @@ namespace AspFitnessApi.Controllers
         public string Name { get; set; }
         public string Password { get; set; }
     }
+
+  
 }

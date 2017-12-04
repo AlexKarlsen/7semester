@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspFitnessApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspFitnessApi.Controllers
 {
@@ -89,6 +90,7 @@ namespace AspFitnessApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         // POST: api/Exercises
         [HttpPost]
         public async Task<IActionResult> PostExercise([FromRoute] Guid workoutId, [FromBody] Exercise exercise)

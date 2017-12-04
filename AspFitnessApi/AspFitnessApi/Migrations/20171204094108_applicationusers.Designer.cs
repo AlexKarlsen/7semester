@@ -12,9 +12,10 @@ using System;
 namespace AspFitnessApi.Migrations
 {
     [DbContext(typeof(AspFitnessApiContext))]
-    partial class AspFitnessApiContextModelSnapshot : ModelSnapshot
+    [Migration("20171204094108_applicationusers")]
+    partial class applicationusers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

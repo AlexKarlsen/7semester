@@ -1,0 +1,12 @@
+<hr>
+    <h2>Workouts</h2>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let workout of results"
+            [class.selected]="workout === selectedWorkout"
+            (click)="onSelect(workout)">
+            {{workout.workoutName}}
+        </li>
+    </ul>
+    
+    <workout-detail [workout]="selectedWorkout"></workout-detail>
+    <exercise-form [workout]="selectedWorkout"></exercise-form>

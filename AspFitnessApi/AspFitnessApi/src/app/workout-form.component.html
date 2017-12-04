@@ -1,0 +1,12 @@
+<div *ngIf="auth.isLoggedInBool">
+<hr>
+<div class="form-inline">
+    <form (ngSubmit)="onSubmit()" #workoutForm="ngForm">
+        <div class="form-group">
+            <input type="text" class="form-control col-md-9" id="name" placeholder="New workout name" required [(ngModel)]="model.workoutName" name="name" #name="ngModel">
+        </div>
+    
+        <button type="submit" class="btn btn-default cl-md-3" (click)="newWorkout();"> Create New Workout</button>
+    </form>     
+</div>
+</div>

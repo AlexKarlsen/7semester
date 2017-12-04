@@ -1,0 +1,11 @@
+<div *ngIf="workout && auth.isLoggedInBool">
+    <hr>
+    <div class="form-inline">
+        <input class="form-control" [(ngModel)]="model.exerciseName" placeholder="Name">
+        <input class="form-control" [(ngModel)]="model.exerciseDescription" placeholder="Description">
+        <input class="form-control" [(ngModel)]="model.exerciseSets" placeholder="Sets">
+        <input class="form-control" [(ngModel)]="model.exerciseReps" placeholder="Reps">
+        <button class="btn btn-default" type="submit" (click)="newExercise();"> Add an Exercise to workout </button>
+    </div>
+    <hr>
+</div>

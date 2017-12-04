@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -90,7 +90,7 @@ namespace AspFitnessApi.Controllers
             return NoContent();
         }
 
-        [Authorize]
+        // [Authorize]
         // POST: api/Exercises
         [HttpPost]
         public async Task<IActionResult> PostExercise([FromRoute] Guid workoutId, [FromBody] Exercise exercise)
@@ -105,7 +105,7 @@ namespace AspFitnessApi.Controllers
             _context.Exercise.Add(exercise);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetExercise", new { id = exercise.ExerciseId }, exercise);
+            return CreatedAtAction("GetWorkout", "Workouts", new { id = exercise.ExerciseId }, exercise);
         }
 
         // DELETE: api/Exercises/5

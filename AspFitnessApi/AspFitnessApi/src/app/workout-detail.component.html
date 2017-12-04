@@ -1,0 +1,17 @@
+<div *ngIf="workout">
+    <h3>Workout program: '{{workout.workoutName}}'</h3>
+        <table class="table">
+            <tr>
+                <th>Exercise name</th>
+                <th>Description</th>
+                <th>Sets</th>
+                <th>Reps</th>
+            </tr>
+            <tr *ngFor="let exercise of workout.exercises">            
+                    <td>{{exercise.exerciseName}}</td>
+                    <td>{{exercise.exerciseDescription}}</td>
+                    <td>{{exercise.exerciseSets}}</td>
+                    <td>{{exercise.exerciseReps}}</td>
+            </tr>
+        </table>
+</div>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,7 +25,7 @@ namespace AspFitnessApi.Controllers
         [HttpGet]
         public IEnumerable<Workout> GetWorkout()
         {
-            return _context.Workout;
+            return _context.Workout.Include(w => w.Exercises);
         }
 
         // GET: api/Workouts/5
@@ -82,7 +82,7 @@ namespace AspFitnessApi.Controllers
             return NoContent();
         }
 
-        [Authorize]
+        //[Authorize]
         // POST: api/Workouts
         [HttpPost]
         public async Task<IActionResult> PostWorkout([FromBody] Workout workout)

@@ -1,6 +1,6 @@
-# FitnessSPA
+# FitnessApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
 ## Development server
 

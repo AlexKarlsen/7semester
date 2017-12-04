@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using AspFitnessApi.Models;
 using Microsoft.AspNetCore.Identity;
+using System.IO;
 
 namespace AspFitnessApi
 {
@@ -52,13 +53,28 @@ namespace AspFitnessApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.Use(async (context, next) => {
+                await next();
+                if (context.Response.StatusCode == 404 &&
+                !Path.HasExtension(context.Request.Path.Value) &&
+                !context.Request.Path.Value.StartsWith("/api/"))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+            app.UseMvcWithDefaultRoute();
+            app.UseDefaultFiles();
+            app.UseStaticFiles(); 
+ 
+
             app.UseCors(builder =>
                 builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
                 );
-            app.UseAuthentication();
             app.UseAuthentication();
             app.UseMvc();
         }

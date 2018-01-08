@@ -16,6 +16,7 @@ module.exports.workoutsList = function (req, res){
 };
 
 module.exports.workoutsCreate = function (req, res){
+    // inline model... should have been in model folder
     var workout = {
         name : req.body.name,
         exercises : []
@@ -46,6 +47,7 @@ module.exports.workoutsReadOne = function(req, res){
     }); 
 };
 
+// Create exercise
 module.exports.workoutsUpdateOne = function(req, res){
     var workout = {$push: {exercises:{ exercise : req.body.exercise, description : req.body.description, sets : req.body.sets, reps : req.body.reps }}};
     MongoClient.connect(url, function(err, db) {

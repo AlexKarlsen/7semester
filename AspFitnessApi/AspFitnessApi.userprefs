@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{0E2D19B7-5650-4648-A5B4-E0635471B05C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AspFitnessApi/Controllers/AccountsController.cs">
+    <Files>
+      <File FileName="AspFitnessApi/Controllers/ExercisesController.cs" Line="1" Column="1" />
+      <File FileName="AspFitnessApi/Controllers/WorkoutsController.cs" Line="1" Column="1" />
+      <File FileName="AspFitnessApi/Controllers/AccountsController.cs" Line="83" Column="18" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.AspFitnessApi PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

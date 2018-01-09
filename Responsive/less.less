@@ -1,0 +1,33 @@
+
+// Variables
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+#header {
+    color: @light-blue;
+}
+
+// Nesting
+#header {
+    h1 {
+        font-size: 26px;
+    }
+    p{
+        font-size: 12px;
+    }
+}
+
+// Mixins
+.rounded-corners (@radius: 5px) {
+    -webkit-border-radius: @radius;
+}
+
+#header {
+    .rounded-corners(@radius);
+}
+
+#footer {
+    .rounded-corners(10px);
+}
+
+

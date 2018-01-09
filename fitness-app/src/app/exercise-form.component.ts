@@ -16,10 +16,6 @@ export class ExerciseFormComponent{
     
         model = new Exercise();
     
-        submitted = false;
-    
-        onSubmit() { this.submitted = true; }
-    
         newExercise(): void {
             console.log(this.model);
             console.log(this.workout._id);

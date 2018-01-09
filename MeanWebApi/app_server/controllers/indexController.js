@@ -18,7 +18,8 @@ function createExercise(_exercise, _description, _sets, _reps, _workout){
 };
 
 function createWorkout(_name){
-    var workout = {name : _name, exercises : []};
+    // model
+    var workout = { name : _name, exercises : [] };
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         db.collection("workouts").insertOne(workout, function(err, res) {
